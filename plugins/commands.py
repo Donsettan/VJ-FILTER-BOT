@@ -434,21 +434,26 @@ async def start(client, message):
         if not files:
             return await message.reply('<b><i>No such file exist.</b></i>')
         filesarr = [] 
-        for file in files:
-            file_id = file.get("file_id")
-    if not file_id:
-        print("Skipped entry without file_id:", file)
-        continue  # Skip this entry
+            for file in files:
+        file_id = file.get("file_id")
+        if not file_id:
+            print("Skipped entry without file_id:", file)
+            continue  # Skip this entry
 
-    files1 = await get_file_details(file_id)
-    title = files1["file_name"]
-    size = get_size(files1["file_size"])
-    f_caption = files1["caption"]
-            if CUSTOM_FILE_CAPTION:
-                try:
-                    f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
-                except:
-                    f_caption=f_caption
+        files1 = await get_file_details(file_id)
+        title = files1["file_name"]
+        size = get_size(files1["file_size"])
+        f_caption = files1["caption"]
+
+        if CUSTOM_FILE_CAPTION:
+            try:
+                f_caption = CUSTOM_FILE_CAPTION.format(
+                    file_name='' if title is None else title,
+                    file_size='' if size is None else size,
+                    file_caption='' if f_caption is None else f_caption
+                )
+            except:
+                f_caption = f_caption
             if f_caption is None:
                 f_caption = f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files1['file_name'].split()))}"
             if not await db.has_premium_access(message.from_user.id):
