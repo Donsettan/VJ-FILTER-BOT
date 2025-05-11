@@ -433,10 +433,9 @@ async def start(client, message):
         files = temp.GETALL.get(file_id)
         if not files:
             return await message.reply('<b><i>No such file exist.</b></i>')
-        filesarr = []
-        
+        filesarr = [] 
         for file in files:
-    file_id = file.get("file_id")
+            file_id = file.get("file_id")
     if not file_id:
         print("Skipped entry without file_id:", file)
         continue  # Skip this entry
