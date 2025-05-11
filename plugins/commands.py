@@ -435,11 +435,15 @@ async def start(client, message):
             return await message.reply('<b><i>No such file exist.</b></i>')
         filesarr = []
         for file in files:
-            file_id = file["file_id"]
-            files1 = await get_file_details(file_id)
-            title = files1["file_name"]
-            size=get_size(files1["file_size"])
-            f_caption=files1["caption"]
+    file_id = file.get("file_id")
+    if not file_id:
+        print("Skipped entry without file_id:", file)
+        continue  # Skip this entry
+
+    files1 = await get_file_details(file_id)
+    title = files1["file_name"]
+    size = get_size(files1["file_size"])
+    f_caption = files1["caption"]
             if CUSTOM_FILE_CAPTION:
                 try:
                     f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
