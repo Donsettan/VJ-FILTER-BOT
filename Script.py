@@ -244,9 +244,7 @@ Nᴀᴍᴇ - {}"""
 
 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 <b>: {}</b>"""
 
-    CAPTION = """<b>📂 ғɪʟᴇɴᴀᴍᴇ : {file_name}
-
-<b>⚙️ sɪᴢᴇ : {file_size}</b>""" 
+    CAPTION = """<b>{file_name}\n\n 🔘 size - {file_size}\n\n╔═════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ════╗\n🔰𝙅𝙊𝙄𝙉 :- @PPpixelparty\n🔰 𝙅𝙊𝙄𝙉 :- @PixelPartyUpdates\n╚═════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ════╝</b>""" 
 
     IMDB_TEMPLATE_TXT = """
 <b>Query: {qurey}
