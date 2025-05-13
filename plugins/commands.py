@@ -437,8 +437,8 @@ async def start(client, message):
         for file in files:
             file_id = file.get("file_id")
             if not file_id:
-            print("Skipped entry without file_id:", file)
-            continue  # Skip this entry
+                print("Skipped entry without file_id:", file)
+                continue  # Skip this entry
 
         files1 = await get_file_details(file_id)
         title = files1["file_name"]
