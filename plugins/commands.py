@@ -443,7 +443,7 @@ async def start(client, message):
         files1 = await get_file_details(file_id)
         title = files1["file_name"]
         size = get_size(files1["file_size"])
-        f_caption = files1.get["caption"]
+        f_caption = files1.get("caption")
 
         if CUSTOM_FILE_CAPTION:
             try:
