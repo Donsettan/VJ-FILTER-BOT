@@ -436,7 +436,7 @@ async def start(client, message):
         filesarr = [] 
         for file in files:
             file_id = file.get("file_id")
-        if not file_id:
+            if not file_id:
             print("Skipped entry without file_id:", file)
             continue  # Skip this entry
 
